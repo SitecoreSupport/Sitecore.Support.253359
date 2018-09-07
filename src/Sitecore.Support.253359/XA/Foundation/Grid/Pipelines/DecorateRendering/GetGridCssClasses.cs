@@ -19,6 +19,9 @@
       {
         IGridFieldParser gridFieldParser = new GridDefinition(gridDefinitionItem).InstantiateGridFieldParser();
         string value = args.Rendering.Parameters["GridParameters"];
+        #region Added code
+        value = System.Uri.UnescapeDataString(value);
+        #endregion
         List<string> list = gridFieldParser.ParseFromFieldValue(value).ToList();
         if (list.Any())
         {
